@@ -7,11 +7,13 @@ export default {
             const response = await fetch(url);
 
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                const errorMessage = `Network response was not ok - Status: ${response.status} ${response.statusText}`;
+                throw new Error(errorMessage);
             }
 
             const responseJson = await response.json();
             return responseJson;
+
         } catch(error) {
             console.error('Error fetching initial deals:', error);
             throw error;
