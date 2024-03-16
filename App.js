@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import ajax from './src/ajax'
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+class App extends React.Component {
+  async componentDidMount() { 
+    const deals = await ajax.fetchInitiailDeals();
+    console.log(deals);
+   }
+  render() {
+    return (
+      <View style = {styles.container}>
+        <Text style={styles.header}>Bakesale</Text>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  header: {
+    fontSize: 40,
   },
 });
+export default App;
