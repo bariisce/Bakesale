@@ -1,10 +1,10 @@
 import React from 'react';
-import ajax from './src/ajax'
+import ajax from './ajax'
 import { StyleSheet, Text, View } from 'react-native';
 
 class App extends React.Component {
   async componentDidMount() { 
-    const deals = await ajax.fetchInitiailDeals();
+    const deals = await ajax.fetchInitialDeals();
     console.log(deals);
    }
   render() {
